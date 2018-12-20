@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">智佳智能助手</string>
+    <string name="zjgs">zjgs</string>
+    <string name="zj_conn">联网</string>
+    <string name="zj_bind_device">绑定设备</string>
+    <string name="zj_unbind_device">解绑设备</string>
+    <string name="zj_play">点播</string>
+
+
+    <string name="zj_userid">用 户 : </string>
+    <string name="zj_input_userid">请输入手机号码</string>
+    <string name="zj_username">用户名称:</string>
+    <string name="zj_input_username">请输入用户名称</string>
+    <string name="zj_imageurl">头像链接:</string>
+    <string name="zj_devices_id">设备ID:</string>
+    <string name="zj_input_devices_id">请输入设备ID</string>
+    <string name="zj_input_imageurl">请输入用户头像链接</string>
+    <string name="zj_bind">绑定</string>
+    <string name="zj_unbind">解绑</string>
+    <string name="zj_psd">密 码 : </string>
+    <string name="zj_input_yzm">请输入验证码</string>
+    <string name="zj_login">登 录</string>
+    <string name="zj_regist">注册</string>
+    <string name="zj_forget_pwd">忘记密码</string>
+</resources>
