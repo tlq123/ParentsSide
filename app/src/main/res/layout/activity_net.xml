@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.turing123.robotframe.connhost.demo.MainActivity">
+    >
 
     <TextView
         android:id="@+id/textView"
@@ -25,7 +25,7 @@
         android:id="@+id/ssid"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentStart="true"
+
         android:layout_alignParentTop="true"
         android:layout_marginTop="36dp"
         android:layout_weight="6"
@@ -38,7 +38,6 @@
         android:id="@+id/line2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="114dp"
         android:background="#ffffff">
@@ -47,7 +46,6 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:layout_weight="6"
             android:background="@drawable/btn"
             android:ems="10"
@@ -68,7 +66,6 @@
         android:id="@+id/type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/ssid"
         android:ems="10"
         android:text="WPA-PSK"
@@ -79,7 +76,6 @@
         android:id="@+id/customData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/type"
         android:ems="10"
         android:text="{customKey:'customValue'}"
@@ -104,7 +100,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
         android:layout_marginBottom="220dp"
         android:text="配置WIFI"
         android:textSize="20dp" />
@@ -113,7 +108,6 @@
         android:id="@+id/tv_conn_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/btn_conn_ap"
         android:layout_marginTop="-220dp"
         android:text=""
