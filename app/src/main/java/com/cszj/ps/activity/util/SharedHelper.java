@@ -57,6 +57,38 @@ public class SharedHelper {
         String wifiPwd = sharedPreferences.getString("wifiPwd","");
         return wifiPwd;
     }
+
+    /*
+    MQTT_APP_KEY 值
+     */
+    public static void saveMQTT_APP_KEY(String params, Context context){
+        SharedPreferences sharedPreferences= context.getSharedPreferences(SHARE_NAME, 0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("MQTT_APP_KEY" , params);
+        editor.commit();
+    }
+
+    public static String getMQTT_APP_KEY(Context context){
+        SharedPreferences sharedPreferences= context.getSharedPreferences(SHARE_NAME, 0);
+        String MQTT_APP_KEY = sharedPreferences.getString("MQTT_APP_KEY","");
+        return MQTT_APP_KEY;
+    }
+
+    /*
+    DeviceId 值
+     */
+    public static void saveDeviceId(String params, Context context){
+        SharedPreferences sharedPreferences= context.getSharedPreferences(SHARE_NAME, 0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("DeviceId" , params);
+        editor.commit();
+    }
+
+    public static String getDeviceId(Context context){
+        SharedPreferences sharedPreferences= context.getSharedPreferences(SHARE_NAME, 0);
+        String DeviceId = sharedPreferences.getString("DeviceId","");
+        return DeviceId;
+    }
 }
 
 

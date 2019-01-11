@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Input your wifi name"
+        android:hint="请输入您需要配置的wifi名称"
         android:textSize="16dp"
         android:textColor="@color/text_color_3"
         />
@@ -29,7 +29,7 @@
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Input your wifi password"
+        android:hint="请输入您需要配置的wifi密码"
         android:textSize="16dp"
         android:textColor="@color/text_color_3"
         />
@@ -49,6 +49,7 @@
         android:hint="Input your name"
         android:textSize="16dp"
         android:textColor="@color/text_color_3"
+        android:visibility="gone"
         android:text="czh"/>
 
     <EditText
@@ -68,22 +69,30 @@
         android:textSize="16dp"
         android:textColor="@color/text_color_3"
         android:text="使用AP发送wifi信息给机器人\n首先需要连接机器人的AP\n设备端机器人AP为：CSZJ_AP_666" />
+    <TextView
+        android:id="@+id/tv_wifi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textColor="@color/text_color_3"
+        android:text="当前连接WiFi" />
+
 
     <Button
         android:id="@+id/btn_conn_ap"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:textSize="16dp"
         android:layout_marginTop="10dp"
-        android:textColor="@color/colorWhite"
+        android:background="@drawable/btn_blue_shape_ovl"
         android:text="SEND WIFI INFO BY AP"
-        android:background="@drawable/btn_blue_shape_ovl"/>
+        android:textColor="@color/colorWhite"
+        android:textSize="16dp" />
 
     <TextView
         android:id="@+id/tv_conn_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
+        android:textSize="14dp"
         android:layout_marginTop="10dp"
         android:textColor="@color/text_color_3"
         />

@@ -43,8 +43,7 @@ public class BindActivity extends BaseActivity implements View.OnClickListener{
     private String[] bindTypeArray = new String[] {"bind","unbind"};
     private String bindType;
 
-    String deviceId = "ai2232100000006";
-//    String deviceId = "ai12345678901033";
+    String deviceId ;
     String uid = "";
     String name = "czh";
     String imageUrl = "http://shp.qpic.cn/hd_priv_pic/0/153213686957a32fecc65728ab14b6d48ead607138/0";
@@ -55,7 +54,7 @@ public class BindActivity extends BaseActivity implements View.OnClickListener{
         setContentView(R.layout.activity_bind);
         mContext = this;
         mActivity = this;
-
+        deviceId = SharedHelper.getDeviceId(this);
         bindType = getIntent().getStringExtra("bindType");
 
         initView();
@@ -113,19 +112,20 @@ public class BindActivity extends BaseActivity implements View.OnClickListener{
 
     // 绑定设备
     public void bindDevice(String uid, String name, String imageUrl){
-
+        String apiKey = SharedHelper.getMQTT_APP_KEY(this) ;
         //1.创建OkHttpClient对象
         OkHttpClient okHttpClient = new OkHttpClient();
         //2.通过RequestBody.create 创建requestBody对象
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("apiKey", ConstantsUtil.MQTT_APP_KEY)
+                .addFormDataPart("apiKey", apiKey)
                 .addFormDataPart("uid", uid)
                 .addFormDataPart("deviceId",deviceId)
                 .addFormDataPart("name",name)
                 .addFormDataPart("imageUrl",imageUrl)
                 .build();
 
+        Log.e(TAG,"uid:"+uid+"  deviceId:"+deviceId+" name:"+name);
         //3.创建Request对象，设置URL地址，将RequestBody作为post方法的参数传入
         Request request = new Request.Builder().url("http://iot-ai.tuling123.com/app-author/bind").post(requestBody).build();
 
@@ -140,9 +140,10 @@ public class BindActivity extends BaseActivity implements View.OnClickListener{
 
             @Override
             public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
-
+                String result = response.body().string() ;
+                Log.e(TAG,"1 response.body().string():"+result);
                 Gson gson=new Gson();
-                final ResponseInfo mResponseInfo = gson.fromJson(response.body().string(), ResponseInfo.class);//把JSON字符串转为对象\
+                final ResponseInfo mResponseInfo = gson.fromJson(result, ResponseInfo.class);//把JSON字符串转为对象\
                 mActivity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -162,17 +163,17 @@ public class BindActivity extends BaseActivity implements View.OnClickListener{
 
     // 绑定设备
     public void unbindDevice(String uid){
-
+        String apiKey = SharedHelper.getMQTT_APP_KEY(this) ;
         //1.创建OkHttpClient对象
         OkHttpClient okHttpClient = new OkHttpClient();
         //2.通过RequestBody.create 创建requestBody对象
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("apiKey", ConstantsUtil.MQTT_APP_KEY)
+                .addFormDataPart("apiKey", apiKey)
                 .addFormDataPart("uid", uid)
                 .addFormDataPart("deviceId",deviceId)
                 .build();
-
+        Log.e(TAG,"uid:"+uid+"  deviceId:"+deviceId);
         //3.创建Request对象，设置URL地址，将RequestBody作为post方法的参数传入
         Request request = new Request.Builder().url("http://iot-ai.tuling123.com/app-author/unbind").post(requestBody).build();
 
@@ -182,13 +183,16 @@ public class BindActivity extends BaseActivity implements View.OnClickListener{
         call.enqueue(new okhttp3.Callback() {
             @Override
             public void onFailure(okhttp3.Call call, IOException e) {
-                Log.i(TAG,"onFailure:");
+                Log.e(TAG,"onFailure:");
             }
 
             @Override
             public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+                String result = response.body().string() ;
+                Log.e(TAG,"2 response.body().string():"+result);
                 Gson gson=new Gson();
-                final ResponseInfo mResponseInfo = gson.fromJson(response.body().string(), ResponseInfo.class);//把JSON字符串转为对象
+                final ResponseInfo mResponseInfo = gson.fromJson(result, ResponseInfo.class);//把JSON字符串转为对象
+
                 mActivity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

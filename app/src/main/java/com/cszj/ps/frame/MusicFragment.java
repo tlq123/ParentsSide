@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -56,7 +57,11 @@ public class MusicFragment extends Fragment {
             webView.getSettings().setMixedContentMode(android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
         String userId = SharedHelper.getUserId(getActivity());
-        String url = "http://iot-ai.tuling123.com/jump/app/source?apiKey="+ ConstantsUtil.MQTT_APP_KEY+"&uid="+userId+"&client=android";
+        String apiKey = SharedHelper.getMQTT_APP_KEY(getActivity()) ;
+        if(TextUtils.isEmpty(apiKey)){
+            apiKey = ConstantsUtil.MQTT_APP_KEY ;
+        }
+        String url = "http://iot-ai.tuling123.com/jump/app/source?apiKey="+ apiKey +"&uid="+userId+"&client=android";
         Log.d("MusicFragment","url="+url);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
@@ -81,7 +86,11 @@ public class MusicFragment extends Fragment {
             ConstantsUtil.isResetWeb = false ;
             webView.clearHistory();
             String userId = SharedHelper.getUserId(getActivity());
-            String url = "http://iot-ai.tuling123.com/jump/app/source?apiKey="+ ConstantsUtil.MQTT_APP_KEY+"&uid="+userId+"&client=android";
+            String apiKey = SharedHelper.getMQTT_APP_KEY(getActivity()) ;
+            if(TextUtils.isEmpty(apiKey)){
+                apiKey = ConstantsUtil.MQTT_APP_KEY ;
+            }
+            String url = "http://iot-ai.tuling123.com/jump/app/source?apiKey="+ apiKey +"&uid="+userId+"&client=android";
             Log.d("MusicFragment","url 2="+url);
             webView.loadUrl(url);
         }

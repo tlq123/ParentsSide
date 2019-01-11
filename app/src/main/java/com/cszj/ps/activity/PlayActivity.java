@@ -57,7 +57,8 @@ public class PlayActivity extends BaseActivity implements View.OnClickListener{
             webView.getSettings().setMixedContentMode(android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
         userId = SharedHelper.getUserId(PlayActivity.this);
-        url = "http://iot-ai.tuling123.com/jump/app/source?apiKey="+ ConstantsUtil.MQTT_APP_KEY+"&uid="+userId+"&client=android";
+        String apiKey = SharedHelper.getMQTT_APP_KEY(this) ;
+        url = "http://iot-ai.tuling123.com/jump/app/source?apiKey="+apiKey+"&uid="+userId+"&client=android";
         Log.i(TAG," url:"+url);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
