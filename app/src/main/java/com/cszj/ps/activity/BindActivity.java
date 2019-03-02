@@ -79,8 +79,6 @@ public class BindActivity extends BaseActivity implements View.OnClickListener{
             bind_Btn.setText(getString(R.string.zj_bind));
         }else{
             bind_textView.setText(getString(R.string.zj_unbind_device));
-            username_Linear.setVisibility(View.GONE);
-            imageurl_Linear.setVisibility(View.GONE);
             bind_Btn.setText(getString(R.string.zj_unbind));
         }
 

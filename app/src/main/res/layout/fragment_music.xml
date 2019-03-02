@@ -4,10 +4,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <WebView
-        android:id="@+id/fragmen_music_web"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </WebView>
+
+        <com.cszj.ps.view.MyWebView
+            android:id="@+id/fragmen_music_web"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.cszj.ps.view.MyWebView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

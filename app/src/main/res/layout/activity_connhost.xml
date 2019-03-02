@@ -16,23 +16,50 @@
         android:textSize="25dp"
         android:text="配网"/>
 
-    <EditText
-        android:id="@+id/ssid"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="请输入您需要配置的wifi名称"
-        android:textSize="16dp"
-        android:textColor="@color/text_color_3"
-        />
-    <EditText
-        android:id="@+id/password"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color_3"
+            android:textSize="16dp"
+            android:text="WIFI名称："/>
+        <EditText
+            android:id="@+id/ssid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入您需要配置的wifi名称"
+            android:textSize="16dp"
+            android:textColor="@color/text_color_3"
+            />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入您需要配置的wifi密码"
-        android:textSize="16dp"
-        android:textColor="@color/text_color_3"
-        />
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color_3"
+            android:textSize="16dp"
+            android:text="WIFI密码："/>
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入您需要配置的wifi密码"
+            android:textSize="16dp"
+            android:textColor="@color/text_color_3"
+            />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/type"
@@ -58,6 +85,7 @@
         android:layout_height="wrap_content"
         android:hint="Input your imageUrl"
         android:textSize="16dp"
+        android:visibility="gone"
         android:textColor="@color/text_color_3"
         android:text="http://shp.qpic.cn/hd_priv_pic/0/153213686957a32fecc65728ab14b6d48ead607138/0"/>
 
@@ -66,6 +94,7 @@
         android:id="@+id/tv_notice_ap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:textSize="16dp"
         android:textColor="@color/text_color_3"
         android:text="使用AP发送wifi信息给机器人\n首先需要连接机器人的AP\n设备端机器人AP为：CSZJ_AP_666" />
@@ -75,8 +104,7 @@
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:textColor="@color/text_color_3"
-        android:text="当前连接WiFi" />
-
+        android:text="当前连接WIFI:" />
 
     <Button
         android:id="@+id/btn_conn_ap"

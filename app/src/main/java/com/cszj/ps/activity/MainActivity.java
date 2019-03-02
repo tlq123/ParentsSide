@@ -32,9 +32,9 @@ public class  MainActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void onResume() {
         super.onResume();
-        //解绑或者绑定设备时 进行刷新
-        musicFragment.webReload();
+
         meFragment.updateName();
+        musicFragment.webReload();
     }
 
     private void init(){
@@ -53,7 +53,6 @@ public class  MainActivity extends BaseActivity implements View.OnClickListener 
         transaction.add(R.id.main_frame_content,meFragment);
         transaction.hide(meFragment).show(musicFragment).commit();
         fragmentIndex = 1 ;
-
 
     }
 

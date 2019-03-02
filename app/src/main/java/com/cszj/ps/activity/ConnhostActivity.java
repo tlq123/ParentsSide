@@ -60,6 +60,9 @@ public class ConnhostActivity extends BaseActivity {
                 case CONNECT_TIME_OUT:
                     tvConnResult.setText(msg.obj.toString());
                     break;
+                case 3:
+                    finish();
+                    break;
                 default:
                     super.handleMessage(msg);
             }
@@ -80,6 +83,7 @@ public class ConnhostActivity extends BaseActivity {
         etSSID.setText(SharedHelper.getWifiName(this));
         etPassword.setText(SharedHelper.getWifiPwd(this));
 
+
         /**
          * 联网示例： AP
          */
@@ -87,10 +91,10 @@ public class ConnhostActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                if(!wifiId.contains("CSZJ_AP_666")){
-                    Toast.makeText(ConnhostActivity.this,"请先连接WiFi：CSZJ_AP_666",Toast.LENGTH_LONG).show();
-                    return;
-                }
+//                if(!wifiId.contains("CSZJ_AP_666")){
+//                    Toast.makeText(ConnhostActivity.this,"请先连接WiFi：CSZJ_AP_666",Toast.LENGTH_LONG).show();
+//                    return;
+//                }
                 final String [] ips = ip.split("\\.");
                 if(ips.length != 4){
                     Toast.makeText(ConnhostActivity.this,"IP获取失败",Toast.LENGTH_LONG).show();
@@ -100,11 +104,12 @@ public class ConnhostActivity extends BaseActivity {
                     @Override
                     public void run() {
                         String serverIP = ips[0]+"."+ips[1]+"."+ips[2]+".1";
-                        SendString("ip:" + ip.trim(), serverIP ,9999);
                         Message message = new Message();
                         message.what = CONNECT_TIME_OUT ;
-                        message.obj = "向IP:"+serverIP+"发送消息超时。 port:"+port;
-                        mainHandler.sendMessageDelayed(message,5000); //延时操作为5秒
+                        message.obj = "向IP:"+serverIP+"发送消息失败，检查WiFi是否连接到CSZJ_AP_666。 端口:"+port;
+                        mainHandler.sendMessageDelayed(message,5000); //延时操作为7秒
+                        SendString("ip:" + ip.trim(), serverIP ,9999);
+
                     }
                 }).start();
 
@@ -199,11 +204,15 @@ public class ConnhostActivity extends BaseActivity {
             message.obj = "KEY:"+content.split(":")[1]+"\nDeviceId:"+content.split(":")[2]+"\nSend wifi info State: " + ret;
             mainHandler.sendMessage(message);
 
+            if(ret){
+                mainHandler.sendEmptyMessageDelayed(3,3000);  //3秒后关闭页面
+            }
         }
     }
-
+//991207
     public void SendString(String content, String ipAddress, int port){
         try {
+            Logger.e(TAG,"ipAddress==="+ipAddress+" port:"+port+" content"+content);
             Socket data = new Socket(ipAddress, port);
             OutputStream outputData = data.getOutputStream();
             InputStream Input = new ByteArrayInputStream(content.getBytes());
